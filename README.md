@@ -1,5 +1,5 @@
 # Kepler Q1‑Q17 DR25 TCE — ML + DL + Transformer Classification Pipeline
-
+ 
 A full, runnable pipeline that trains and compares **4 classical ML models**,
 a **PyTorch MLP**, and a **PyTorch Transformer** (FT-Transformer-style, tabular
 self-attention) on the Kepler DR25 Threshold Crossing Event (TCE) table —

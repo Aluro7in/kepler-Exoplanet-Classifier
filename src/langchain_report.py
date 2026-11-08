@@ -9,10 +9,15 @@ script always runs end-to-end offline.
 """
 import os
 import pandas as pd
-from langchain_core.prompts import PromptTemplate
 
-REPORT_PROMPT = PromptTemplate.from_template(
-    """You are an ML analyst. Given this model comparison table for a Kepler
+try:
+    from langchain_core.prompts import PromptTemplate
+except Exception:
+    PromptTemplate = None
+
+if PromptTemplate is not None:
+    REPORT_PROMPT = PromptTemplate.from_template(
+        """You are an ML analyst. Given this model comparison table for a Kepler
 exoplanet TCE (Threshold Crossing Event) classifier, write a concise
 (150-200 word) report for a technical audience covering:
 - which model performed best and by how much
@@ -25,7 +30,9 @@ Metrics table (csv):
 
 Label source in use: {label_source}
 """
-)
+    )
+else:
+    REPORT_PROMPT = None
 
 
 def _try_llm_report(prompt_text: str) -> str | None:
@@ -85,10 +92,21 @@ def _template_fallback_report(df: pd.DataFrame, label_source: str) -> str:
 
 
 def generate_report(comparison_csv="reports/model_comparison.csv", label_source="unknown"):
-    df = pd.read_csv(comparison_csv)
-    prompt_text = REPORT_PROMPT.format(metrics_csv=df.to_csv(index=False), label_source=label_source)
+    if os.path.exists("reports/label_source.txt"):
+        try:
+            with open("reports/label_source.txt", "r", encoding="utf-8") as f:
+                label_source = f.read().strip() or label_source
+        except Exception:
+            pass
 
-    report = _try_llm_report(prompt_text)
+    df = pd.read_csv(comparison_csv)
+
+    if REPORT_PROMPT is not None:
+        prompt_text = REPORT_PROMPT.format(metrics_csv=df.to_csv(index=False), label_source=label_source)
+        report = _try_llm_report(prompt_text)
+    else:
+        report = None
+
     if report is None:
         report = _template_fallback_report(df, label_source)
 

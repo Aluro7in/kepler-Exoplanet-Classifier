@@ -27,10 +27,27 @@ def main():
             with zipfile.ZipFile(zip_path, 'r') as zf:
                 csv_in_zip = None
                 target_filename = os.path.basename(csv_path)
-                for f in zf.namelist():
-                    if f.endswith(target_filename) or (target_filename in f and f.endswith(".csv")):
-                        csv_in_zip = f
+                archive_members = zf.namelist()
+                for f in archive_members:
+                    normalized = f.replace("\\", "/")
+                    basename = os.path.basename(normalized)
+                    if not normalized.endswith(".csv"):
+                        continue
+
+                    lower_basename = basename.lower()
+                    lower_norm = normalized.lower()
+
+                    is_data_raw_tce = (
+                        "/data/raw/" in lower_norm or "data/raw/" in lower_norm
+                    ) and (
+                        lower_basename == target_filename.lower() or
+                        lower_basename.startswith("q1_q17_dr25_tce")
+                    )
+
+                    if is_data_raw_tce:
+                        csv_in_zip = normalized
                         break
+
                 if csv_in_zip:
                     log.info(f"Extracting {csv_in_zip} from zip to {csv_path}...")
                     with open(csv_path, 'wb') as f_out:

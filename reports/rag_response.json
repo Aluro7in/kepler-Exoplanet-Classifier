@@ -1,0 +1,71 @@
+{
+  "query": "Summarize the most promising exoplanet candidate signals from all available Kepler datasets.",
+  "retrieved_documents": [
+    {
+      "id": "summary:Exoplanet-Kepler-data.csv",
+      "source": "data\\raw\\Exoplanet-Kepler-data.csv",
+      "source_type": "dataset_summary",
+      "text": "Dataset Exoplanet-Kepler-data.csv contains 34032 rows and 156 columns. Columns: rowid, kepid, tce_plnt_num, tce_rogue_flag, tce_delivname, rowupdate, tce_datalink_dvs, tce_datalink_dvr, tce_period, tce_period_err, tce_time0bk, tce_time0bk_err, tce_time0, tce_time0_err, tce_ror, tce_ror_err, tce_dor, tce_dor_err, tce_incl, tce_incl_err.",
+      "relevance_score": 0.03711894131585656
+    },
+    {
+      "id": "row:q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv:2",
+      "source": "data\\raw\\Kepler\\q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv",
+      "source_type": "tce_row",
+      "text": "Kepler record 2: rowid=3 | kepid=10748390 | kepoi_name=K00003.01 | kepler_name=Kepler-3 b | koi_disposition=CONFIRMED | koi_vet_stat=Done | koi_vet_date=2018-08-16 | koi_pdisposition=CANDIDATE | koi_fpflag_nt=0 | koi_fpflag_ss=0 | koi_fpflag_co=0 | koi_fpflag_ec=0 | koi_disp_prov=q1_q17_dr25_sup_koi | koi_period=4.887803076 | koi_period_err1=4.66e-07 | koi_period_err2=-4.66e-07 | koi_time0bk=124.8130808 | koi_time0bk_err1=7.51e-05 | koi_time0bk_err2=-7.51e-05 | koi_time0=2454957.813 | koi_time0_err1=7.51e-05 | koi_time0_err2=-7.51e-05 | koi_parm_prov=q1_q17_dr25_sup_koi | koi_count=1 | koi_tce_delivname=q1_q17_dr25_tce | koi_datalink_dvr=010/010748/010748390/dv/kplr010748390-20160209194854_dvr.pdf | ra=297.70935 | dec=48.080853 | koi_kepmag=9.174 | koi_gmag=10.665 | koi_rmag=9.479 | koi_jmag=7.608 | koi_hmag=7.131 | koi_kmag=7.009",
+      "relevance_score": 0.017256905712699413
+    },
+    {
+      "id": "row:q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv:1",
+      "source": "data\\raw\\Kepler\\q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv",
+      "source_type": "tce_row",
+      "text": "Kepler record 1: rowid=2 | kepid=10666592 | kepoi_name=K00002.01 | kepler_name=Kepler-2 b | koi_disposition=CONFIRMED | koi_vet_stat=Done | koi_vet_date=2018-08-16 | koi_pdisposition=CANDIDATE | koi_fpflag_nt=0 | koi_fpflag_ss=1 | koi_fpflag_co=0 | koi_fpflag_ec=0 | koi_disp_prov=q1_q17_dr25_sup_koi | koi_period=2.204735417 | koi_period_err1=4.3e-08 | koi_period_err2=-4.3e-08 | koi_time0bk=121.3585417 | koi_time0bk_err1=1.6e-05 | koi_time0bk_err2=-1.6e-05 | koi_time0=2454954.359 | koi_time0_err1=1.6e-05 | koi_time0_err2=-1.6e-05 | koi_parm_prov=q1_q17_dr25_sup_koi | koi_count=1 | koi_tce_delivname=q1_q17_dr25_tce | koi_datalink_dvr=010/010666/010666592/dv/kplr010666592-20160209194854_dvr.pdf | ra=292.24728 | dec=47.969521 | koi_kepmag=10.463 | koi_gmag=10.935 | koi_rmag=10.49 | koi_jmag=9.555 | koi_hmag=9.344 | koi_kmag=9.334",
+      "relevance_score": 0.016974172135236876
+    },
+    {
+      "id": "row:q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv:0",
+      "source": "data\\raw\\Kepler\\q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv",
+      "source_type": "tce_row",
+      "text": "Kepler record 0: rowid=1 | kepid=11446443 | kepoi_name=K00001.01 | kepler_name=Kepler-1 b | koi_disposition=CONFIRMED | koi_vet_stat=Done | koi_vet_date=2018-08-16 | koi_pdisposition=CANDIDATE | koi_fpflag_nt=0 | koi_fpflag_ss=0 | koi_fpflag_co=0 | koi_fpflag_ec=0 | koi_disp_prov=q1_q17_dr25_sup_koi | koi_period=2.470613377 | koi_period_err1=2.7e-08 | koi_period_err2=-2.7e-08 | koi_time0bk=122.763305 | koi_time0bk_err1=8.7e-06 | koi_time0bk_err2=-8.7e-06 | koi_time0=2454955.763 | koi_time0_err1=8.7e-06 | koi_time0_err2=-8.7e-06 | koi_parm_prov=q1_q17_dr25_sup_koi | koi_count=1 | koi_tce_delivname=q1_q17_dr25_tce | koi_datalink_dvr=011/011446/011446443/dv/kplr011446443-20160209194854_dvr.pdf | ra=286.80847 | dec=49.316399 | koi_kepmag=11.338 | koi_gmag=11.736 | koi_rmag=11.275 | koi_imag=11.168 | koi_zmag=11.126 | koi_jmag=10.232 | koi_hmag=9.92 | koi_kmag=9.846",
+      "relevance_score": 0.015203738556213278
+    },
+    {
+      "id": "row:koiapp_2026.07.08_22.49.47.csv:0",
+      "source": "data\\raw\\Kepler\\koiapp_2026.07.08_22.49.47.csv",
+      "source_type": "tce_row",
+      "text": "Kepler record 0: rowid=1 | kepid=757450 | kepoi_name=K00889.01 | pp_koi_period=8.88 | pp_koi_time0bk=134.452 | pp_koi_depth=15945.0 | pp_host_rel_prob=1.0 | pp_host_prior_prob=0.78 | pp_host_prob_prov=PROB | pp_host_prob_score=1.0 | pp_1hi_starid=KIC 757450 | pp_1hi_ra=291.1376 | pp_1hi_dec=36.5774 | pp_1hi_kepmag=15.26 | pp_1hi_rel_prob=1.0 | pp_1hi_mod_depth=130463.0 | pp_1hi_prob_prov=KIC | pp_2hi_starid=KIC 757441 | pp_2hi_ra=291.1362 | pp_2hi_dec=36.5755 | pp_2hi_kepmag=17.56 | pp_2hi_rel_prob=9.1e-102 | pp_2hi_mod_depth=2887460.0 | pp_2hi_prob_prov=KIC | pp_unk_rel_prob=1.726e-06 | pp_bkgd_density=1.903e-05",
+      "relevance_score": 0.0036645483026961083
+    }
+  ],
+  "winner": {
+    "kepid": 2304235,
+    "tce_plnt_num": 1,
+    "ensemble_probability": 0.0011858200845265945,
+    "label": "UNKNOWN",
+    "models": {
+      "logistic_regression": 6.32885783709337e-05,
+      "random_forest": 0.019838649982922986,
+      "gradient_boosting": 0.0001560366072282945,
+      "svm": 0.009509755131515786,
+      "mlp": 0.0006559594767168164,
+      "transformer": 0.012100876308977604
+    }
+  },
+  "response": "Using the Kepler evidence bundle and the trained models, the strongest candidate is NOT_PLANET with an ensemble probability of 0.001. The retrieval layer surfaced 5 documents, and the most relevant evidence is summarized below.",
+  "available_models": [
+    "logistic_regression",
+    "random_forest",
+    "gradient_boosting",
+    "svm",
+    "mlp",
+    "transformer"
+  ],
+  "policy_weights": {
+    "random_forest": 0.17614193216234175,
+    "gradient_boosting": 0.17371406093999223,
+    "mlp": 0.1664837414478423,
+    "svm": 0.16252555043168462,
+    "logistic_regression": 0.16177656758968242,
+    "transformer": 0.15935814742845672
+  }
+}

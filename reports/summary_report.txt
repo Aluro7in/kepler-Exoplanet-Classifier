@@ -1,7 +1,7 @@
-MODEL COMPARISON SUMMARY (template report â€” no LLM API key found)
+MODEL COMPARISON SUMMARY (template report — no LLM API key found)
 
-Best model: logistic_regression (F1=1.000, ROC-AUC=1.000, accuracy=1.000).
-Weakest model: svm (F1=0.986).
-Classical ML mean F1=0.996 vs. neural models mean F1=0.994 â€” classical ML matches or beats the neural models on this feature set.
-Label source: unknown. Labels are a weak proxy (tce_rogue_flag + tce_nkoi), so treat these numbers as a pipeline sanity check, not a validated science result â€” re-run with internet access to merge real KOI dispositions.
+Best model: random_forest (F1=0.892, ROC-AUC=0.991, accuracy=0.974).
+Weakest model: transformer (F1=0.807).
+Classical ML mean F1=0.853 vs. neural models mean F1=0.825 — classical ML matches or beats the neural models on this feature set.
+Label source: koi_merge (Option A). Labels came from a real koi_disposition merge, so metrics reflect a genuine astrophysical classification task.
 Next step: run a permutation-importance or SHAP analysis on the best model to check whether it's relying on physically meaningful features (SNR, depth, centroid offsets) rather than incidental artifacts of the proxy label.

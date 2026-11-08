@@ -32,6 +32,69 @@ class MLPClassifier(nn.Module):
             return logits, emb
         return logits
 
+class CNN1DClassifier(nn.Module):
+    """1D CNN that treats a light-curve-like sequence as a local pattern.
+    The first layer learns short transit/flux-shape motifs, the later layers
+    compress the sequence into a classifiable representation."""
+    def __init__(self, n_features: int = 64, n_classes: int = 2):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv1d(1, 16, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool1d(2),
+            nn.Conv1d(16, 32, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool1d(2),
+        )
+        self.seq_len = n_features // 4
+        self.fc = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(32 * self.seq_len, 64),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(64, n_classes),
+        )
+
+    def forward(self, x, return_embedding=False):
+        if x.ndim == 2:
+            x = x.unsqueeze(1)
+        emb = self.net(x)
+        logits = self.fc(emb)
+        if return_embedding:
+            return logits, emb
+        return logits
+
+
+class RNNClassifier(nn.Module):
+    """GRU-based sequence classifier for the light-curve reconstruction.
+    The recurrence layer accumulates temporal context from flux values and
+    exposes an aggregate state for the binary exoplanet/no-exoplanet decision."""
+    def __init__(self, input_size: int = 1, hidden_size: int = 32, n_classes: int = 2, n_layers: int = 2):
+        super().__init__()
+        self.rnn = nn.GRU(
+            input_size=input_size,
+            hidden_size=hidden_size,
+            num_layers=n_layers,
+            batch_first=True,
+            dropout=0.1 if n_layers > 1 else 0.0,
+        )
+        self.head = nn.Sequential(
+            nn.Linear(hidden_size, 32),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(32, n_classes),
+        )
+
+    def forward(self, x, return_embedding=False):
+        if x.ndim == 2:
+            x = x.unsqueeze(-1)
+        out, _ = self.rnn(x)
+        emb = out[:, -1, :]
+        logits = self.head(emb)
+        if return_embedding:
+            return logits, emb
+        return logits
+
 
 class FeatureTokenizer(nn.Module):
     """Turns each scalar feature into a d_model-dim token via its own
@@ -44,7 +107,6 @@ class FeatureTokenizer(nn.Module):
     def forward(self, x):
         # x: (batch, n_features) -> (batch, n_features, d_model)
         return x.unsqueeze(-1) * self.weight + self.bias
-
 
 class TabTransformer(nn.Module):
     def __init__(self, n_features: int, n_classes: int = 2,

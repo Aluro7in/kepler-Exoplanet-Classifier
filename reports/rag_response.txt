@@ -1,0 +1,8 @@
+Using the Kepler evidence bundle and the trained models, the strongest candidate is NOT_PLANET with an ensemble probability of 0.001. The retrieval layer surfaced 5 documents, and the most relevant evidence is summarized below.
+
+Retrieved sources:
+- dataset_summary :: Exoplanet-Kepler-data.csv :: 0.037
+- tce_row :: q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv :: 0.017
+- tce_row :: q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv :: 0.017
+- tce_row :: q1_q17_dr25_sup_koi_2026.07.08_22.49.17.csv :: 0.015
+- tce_row :: koiapp_2026.07.08_22.49.47.csv :: 0.004
